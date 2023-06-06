@@ -1,13 +1,15 @@
+import { getTimestampAsync } from "@/utils";
+
 // get initial props with revalidate
 export const getStaticProps = async () => {
   console.log("fetching new data");
-  const data = await fetch(`https://delay-test.deno.dev`).then((res) =>
-    res.json()
-  );
+  const timestamp = await getTimestampAsync();
 
   return {
     props: {
-      data: data,
+      data: {
+        timestamp,
+      },
     },
     revalidate: 30, // 24 hours
   };

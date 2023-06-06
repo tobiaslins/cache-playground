@@ -1,16 +1,16 @@
+import { getTimestampAsync } from "@/utils";
+
 export const getStaticProps = async ({
   params,
 }: {
   params: { id: string };
 }) => {
   console.log("fetching new data", params.id);
-  const data = await fetch(`https://delay-test.deno.dev`).then((res) =>
-    res.json()
-  );
+  const timestamp = await getTimestampAsync();
 
   return {
     props: {
-      data: data,
+      data: { timestamp },
     },
     revalidate: 10,
   };
