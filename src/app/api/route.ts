@@ -7,3 +7,5 @@ export async function GET(request: Request) {
     timestamp: Date.now(),
   });
 }
+
+export const dynamic = "force-dynamic";
