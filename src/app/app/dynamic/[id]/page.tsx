@@ -2,6 +2,10 @@ import { getTimestampAsync } from "@/utils";
 
 export const revalidate = 10;
 
+// export async function generateStaticParams() {
+//   return [];
+// }
+
 export default async function Page({ params }: { params: { id: string } }) {
   const timestamp = await getTimestampAsync();
   const renderTime = Date.now();
@@ -11,7 +15,9 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      Dynamic {params.id} ISR {renderTime - ts}
+      Dynamic {params.id} ISR {renderTime - ts} {Date.now()}
     </div>
   );
 }
+
+export const dynamic = "force-static";
